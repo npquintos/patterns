@@ -4,17 +4,6 @@
     a given year.
 '''
 
-################################################################################
-#  DETAILS: When you create this class, you need to pass a datetime object.    #
-#           The year of this datetime object is then extracted and all holiday #
-#           datetime are then determined and placed in self.dates. It does not #
-#           calculate Easter season holidays as it is too complicated.         #
-#                                                                              #
-#  REQUESTED BY: Noel Quintos (for various purposes)                           #
-#  AUTHOR      : Noel Quintos                                                  #
-#  REVISION HISTORY:                                                           #
-#    -  Initial code                                                           #
-################################################################################
 
 import os
 import sys
