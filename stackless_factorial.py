@@ -1,3 +1,5 @@
+# This version will not result to stack overflow no
+# matter how large 'n' is. It has a bug by design.
 def factorial(n):
     register = [[n, n]]
     while True:
