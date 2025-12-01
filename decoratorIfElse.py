@@ -41,6 +41,7 @@ def process_event3(event):
 def process_event4(event):
     return f"Event4:  {event}"
 
+# Test if it works
 for event, name in zip('xxx event3 event1 event4 event2'.split(), 'reading wedding birth death school'.split()):
     f = function_given_event.get(event)
     if f is None:
