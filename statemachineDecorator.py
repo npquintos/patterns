@@ -7,7 +7,7 @@
     2. For every function you define in step 1 above,
         decorate them with:
 
-        @StateMachine.register('state name')
+        @StateMachine.Do('state name')
 
         replacing 'state name' with the name of the state that
         this function should respond to.
@@ -23,7 +23,7 @@
 class StateMachine:
     proc_given_state = {}
     @staticmethod
-    def register(event):
+    def Do(event):
         def decorator(base_function):
             StateMachine.proc_given_state[event] = base_function
             def improved_function(*args, **kwargs):
@@ -38,20 +38,20 @@ class StateMachine:
 
 if __name__ == '__main__':
     ######### These are steps 1 to 2 #################
-    @StateMachine.register('first')
+    @StateMachine.Do('first')
     def first_function(cargo): # state 'first'
         print(f"first_function called with cargo {cargo}, now calling third")
         cargo = 'AAA'
         return ['third', cargo]
 
-    @StateMachine.register('second')
+    @StateMachine.Do('second')
     def second_function(cargo): # state 'second'
         print(f"second_function called with cargo {cargo}, now calling end")
         cargo = 'CCC'
         return ['end', cargo] ######### VERY IMPORTANT to have at least one
                               ######### returnung ['end', cargo]
 
-    @StateMachine.register('third')
+    @StateMachine.Do('third')
     def third_function(cargo): # state 'third'
         print(f"third_function called with cargo {cargo}, now calling second")
         cargo = 'BBB'
