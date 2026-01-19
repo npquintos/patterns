@@ -37,7 +37,7 @@ for event, arg in zip('xxx event3 event1 event4 event2'.split(), 'reading weddin
     print(f'{event=} {result=}')
 
 The advantage of the solution below is that, say, you want to add a function for event 'endOfTheWorld' called
-bailOut, all you need to do is add code below and that is all you need. No need to add the event checking 
+bailOut, all you need to do is add code below and that is all you need. No need to add the event checking
 in 'process_event' as in above
 
 @Registry.register('endOfTheWorld')
@@ -70,7 +70,10 @@ if __name__ == '__main__':
     def process_event1(arg):
         return f"Event1: {arg}"
 
+    # code below is for both 'event2'
+    # and 'event22' to use same function
     @Registry.register('event2')
+    @Registry.register('event22')
     def process_event2(arg):
         return f"Event2: {arg}"
 
@@ -78,12 +81,18 @@ if __name__ == '__main__':
     def process_event3(arg):
         return f"Event3: {arg}"
 
+    # code below is for both 'event43'
+    # and 'event4' to use same function
+    @Registry.register('event43')
     @Registry.register('event4')
     def process_event4(arg):
         return f"Event4: {arg}"
 
-    for event, arg in zip('xxx event3 event1 event4 event2'.split(), 'reading wedding birth death school'.split()):
+    for event, arg in zip('xxx event43 event3 event1 event4 event2 event22'.split(), 'reading child43 wedding birth death school catch22'.split()):
         result = Registry.execute(event, arg)
         print(f'{event=} {result=}')
+
+
+
 
 
